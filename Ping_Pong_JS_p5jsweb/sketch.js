@@ -18,13 +18,27 @@ let raqueteAltura = 100;
 let xRaqueteOponente = 587;
 let yRaqueteOponente = 150;
 let velocidadeYOponente;
+//Controle da Raquete oponente
+let chanceDeErrar = 0;
 
 //placar do jogo
 let meusPontos = 0;
 let pontosDoOponente = 0;
 
+//sons do jogo
+let raquetada;
+let ponto;
+let trilha;
+
+function preload() {
+    trilha = loadSound("sons/trilha.mp3");
+    ponto = loadSound("sons/ponto.mp3");
+    raquetada = loadSound("sons/raquetada.mp3");
+}
+
 function setup() {
   createCanvas(600, 400);
+  trilha.loop();
 }
 
 function draw() {
@@ -34,6 +48,7 @@ function draw() {
   mostraBolinha();
   movimentoBolinha();
   verificaColisaoBorda();
+  bolinhaNaoFicaPresa();
   
   //Raquete jogador
   mostraRaquete(xRaquete, yRaquete);
@@ -87,6 +102,7 @@ function verificaColisaoRaquete(x, y) {
     colidiu = collideRectCircle(x, y, raqueteComp, raqueteAltura, xBolinha, yBolinha, raio);
     if (colidiu){
         velxBolinha *= -1;
+        raquetada.play();
     }
 }
 
@@ -96,7 +112,8 @@ function mostraRaquete(x,y) {
 
 function movimentaRaqueteOponente() {
     velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComp / 2 - 30;
-    yRaqueteOponente += velocidadeYOponente
+    yRaqueteOponente += velocidadeYOponente + chanceDeErrar
+    calculaChanceDeErrar()
 }
 
 function incluiPlacar() {
@@ -116,8 +133,31 @@ function incluiPlacar() {
 function marcaPonto() {
     if (xBolinha > 590) {
         meusPontos += 1;
+        ponto.play();
     }
     if (xBolinha < 10) {
         pontosDoOponente += 1;
+        ponto.play();
+    }
+}
+
+function calculaChanceDeErrar() {
+  if (pontosDoOponente >= meusPontos) {
+    chanceDeErrar += 1
+    if (chanceDeErrar >= 39){
+    chanceDeErrar = 40
+    }
+  } else {
+    chanceDeErrar -= 1
+    if (chanceDeErrar <= 35){
+    chanceDeErrar = 35
+    }
+  }
+}
+
+function bolinhaNaoFicaPresa(){
+    if (xBolinha + raio < 0){
+    console.log('bolinha ficou presa');
+    xBolinha = 300;
     }
 }
