@@ -94,9 +94,6 @@ footer {
   margin-top: 20px;
 }
 
-main {
-}
-
 form {
   margin: 40px 0 40px;
 }
@@ -258,13 +255,9 @@ th {
     overflow-x: hidden;
   }
 
-  main {
-    width: 99%;
-  }
-
   .caixa,
   .principal,
-  .conteudo-beneficios {
+  .conteudo-beneficios{
     width: auto;
     margin: 0 10px;
   }
@@ -278,11 +271,11 @@ th {
     width: 90%;
   }
 
-  h1 {
+  h1{
     text-align: center;
   }
 
-  nav {
+  nav{
     position: static;
     text-align: center;
   }
@@ -295,4 +288,30 @@ th {
   .imagem-beneficios {
     width: 100%;
   }
+
+  .produtos{
+    width: auto;
+  }
+
+  .produtos li{
+    display: block;
+    width: 75%;
+    margin: 20px auto;
+  }
+
+  .formulario{
+    width: auto;
+    margin: 20px;
+
+  }
+
+  .enviar{
+    width: 50%;
+    margin: 20px auto;
+  }
+
+  .horarios{
+    margin: 50px auto;
+  }
+
 }
