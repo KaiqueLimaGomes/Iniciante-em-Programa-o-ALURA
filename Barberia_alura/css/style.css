@@ -94,8 +94,10 @@ footer {
   margin-top: 20px;
 }
 
-form {
-  margin: 40px 0 40px;
+.formulario{
+  width: 940px;
+  margin: 0 auto;
+  padding: 50px;
 }
 
 form label,
@@ -135,6 +137,10 @@ form legend {
 
 table {
   margin: 20px 40px;
+}
+
+.horarios {
+  margin:  20px auto;
 }
 
 thead {
@@ -300,9 +306,12 @@ th {
   }
 
   .formulario{
+    padding: auto;
     width: auto;
-    margin: 20px;
+  }
 
+  form{
+    width: auto;
   }
 
   .enviar{
